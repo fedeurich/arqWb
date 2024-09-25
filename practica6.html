@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar y Borrar un párrafo</title>
+</head>
+<body>
+
+    <!-- Botones para agregar y borrar el párrafo -->
+    <button id="agregarBtn">Agregar párrafo</button>
+    <button id="borrarBtn">Borrar párrafo</button>
+
+    <!-- Contenedor donde se añadirá el párrafo -->
+    <div id="contenedor"></div>
+
+    <script>
+        const agregarBtn = document.getElementById('agregarBtn');
+        const borrarBtn = document.getElementById('borrarBtn');
+        const contenedor = document.getElementById('contenedor');
+        let parrafo = null; // Para controlar si el párrafo está creado
+
+        // Función para agregar el párrafo
+        agregarBtn.addEventListener('click', () => {
+             // Solo agregar si el párrafo no existe
+                parrafo = document.createElement('p'); // Crear un elemento <p>
+                parrafo.textContent = 'Este es un párrafo dinámico.'; // Asignar el texto
+                contenedor.appendChild(parrafo); // Añadir el párrafo al contenedor
+            
+        });
+
+        // Función para borrar el párrafo
+        borrarBtn.addEventListener('click', () => {
+            if (contenedor.lastChild) { // Verificar si hay algún párrafo en el contenedor
+                contenedor.removeChild(contenedor.lastChild); // Eliminar el último párrafo
+            }
+        });
+    </script>
+
+</body>
+</html>

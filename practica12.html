@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar y Borrar Datos</title>
+    <style>
+        .numero {
+            margin: 5px; /* Espaciado entre los números */
+            padding: 10px; /* Espaciado interno */
+            border: 1px solid #000; /* Borde de los números */
+            display: inline-block; /* Alinear los divs en línea */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="cargarBtn">Cargar Datos</button>
+    <button id="borrarBtn">Borrar Datos</button>
+    
+    <div id="contenedor"></div> <!-- Contenedor para los números -->
+
+    <script>
+        const cargarBtn = document.getElementById('cargarBtn'); // Botón para cargar datos
+        const borrarBtn = document.getElementById('borrarBtn'); // Botón para borrar datos
+        const contenedor = document.getElementById('contenedor'); // Contenedor para mostrar los números
+        
+        // Array con valores del 1 al 10
+        const numeros = Array.from({length: 10}, (_, i) => i + 1);
+
+        // Función para cargar los datos
+        cargarBtn.addEventListener('click', () => {
+            contenedor.innerHTML = ''; // Limpiar contenedor antes de cargar
+            numeros.forEach(num => {
+                const div = document.createElement('div'); // Crear un div para cada número
+                div.className = 'numero'; // Añadir clase al div
+                div.textContent = num; // Asignar el número como texto
+                contenedor.appendChild(div); // Añadir el div al contenedor
+            });
+        });
+
+        // Función para borrar los datos
+        borrarBtn.addEventListener('click', () => {
+            contenedor.innerHTML = ''; // Limpiar el contenedor
+        });
+    </script>
+
+</body>
+</html>

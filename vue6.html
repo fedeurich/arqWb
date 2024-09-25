@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de Números con Vue 3</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centrar el contenido */
+            margin-top: 50px; /* Espacio superior */
+        }
+        input {
+            padding: 10px; /* Espaciado interno para los inputs */
+            margin: 0 10px; /* Espaciado horizontal entre inputs */
+            font-size: 16px; /* Tamaño de fuente de los inputs */
+        }
+        div {
+            margin-top: 20px; /* Espacio superior para el div de resultado */
+            font-size: 24px; /* Tamaño de fuente del resultado */
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Suma de Números</h1>
+    <input type="number" v-model.number="numero1" placeholder="Número 1" />
+    <input type="number" v-model.number="numero2" placeholder="Número 2" />
+    <div>La suma es: {{ suma }}</div> <!-- Mostrar la suma automáticamente -->
+</div>
+
+<script>
+    const { createApp } = Vue; // Importar Vue
+
+    createApp({
+        data() {
+            return {
+                numero1: 0, // Inicializar el primer número
+                numero2: 0  // Inicializar el segundo número
+            };
+        },
+        computed: {
+            suma() {
+                return this.numero1 + this.numero2; // Calcular la suma de ambos números
+            }
+        }
+    }).mount('#app'); // Montar la aplicación en el elemento con id "app"
+</script>
+
+</body>
+</html>
+

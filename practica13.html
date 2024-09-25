@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar y Ordenar Datos</title>
+    <style>
+        .numero {
+            margin: 5px; /* Espaciado entre los números */
+            padding: 10px; /* Espaciado interno */
+            border: 1px solid #000; /* Borde de los números */
+            display: inline-block; /* Alinear los divs en línea */
+        }
+        button:disabled {
+            background-color: #ccc; /* Color de fondo para botones desactivados */
+            cursor: not-allowed; /* Cambiar cursor para indicar que no se puede hacer clic */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="cargarBtn">Cargar Datos</button>
+    <button id="borrarBtn">Borrar Datos</button>
+    <button id="ordenarAsc" disabled>Ordenar Ascendente</button>
+    <button id="ordenarDesc" disabled>Ordenar Descendente</button>
+    
+    <div id="contenedor"></div> <!-- Contenedor para los números -->
+
+    <script>
+        const cargarBtn = document.getElementById('cargarBtn'); // Botón para cargar datos
+        const borrarBtn = document.getElementById('borrarBtn'); // Botón para borrar datos
+        const ordenarAsc = document.getElementById('ordenarAsc'); // Botón para ordenar ascendente
+        const ordenarDesc = document.getElementById('ordenarDesc'); // Botón para ordenar descendente
+        const contenedor = document.getElementById('contenedor'); // Contenedor para mostrar los números
+        
+        // Array con valores del 1 al 10
+        let numeros = Array.from({length: 10}, (_, i) => i + 1);
+
+        // Función para cargar los datos
+        cargarBtn.addEventListener('click', () => {
+            contenedor.innerHTML = ''; // Limpiar contenedor antes de cargar
+            numeros.forEach(num => {
+                const div = document.createElement('div'); // Crear un div para cada número
+                div.className = 'numero'; // Añadir clase al div
+                div.textContent = num; // Asignar el número como texto
+                contenedor.appendChild(div); // Añadir el div al contenedor
+            });
+            activarBotones(); // Activar los botones de ordenar
+        });
+
+        // Función para borrar los datos
+        borrarBtn.addEventListener('click', () => {
+            contenedor.innerHTML = ''; // Limpiar el contenedor
+            desactivarBotones(); // Desactivar los botones de ordenar
+        });
+
+        // Función para activar los botones de ordenar
+        function activarBotones() {
+            ordenarAsc.disabled = false; // Activar botón de ordenar ascendente
+            ordenarDesc.disabled = false; // Activar botón de ordenar descendente
+        }
+
+        // Función para desactivar los botones de ordenar
+        function desactivarBotones() {
+            ordenarAsc.disabled = true; // Desactivar botón de ordenar ascendente
+            ordenarDesc.disabled = true; // Desactivar botón de ordenar descendente
+        }
+
+        // Función para ordenar en orden ascendente
+        ordenarAsc.addEventListener('click', () => {
+            numeros.sort((a, b) => a - b); // Ordenar ascendentemente
+            mostrarNumeros(); // Mostrar los números ordenados
+        });
+
+        // Función para ordenar en orden descendente
+        ordenarDesc.addEventListener('click', () => {
+            numeros.sort((a, b) => b - a); // Ordenar descendentemente
+            mostrarNumeros(); // Mostrar los números ordenados
+        });
+
+        // Función para mostrar los números en el contenedor
+        function mostrarNumeros() {
+            contenedor.innerHTML = ''; // Limpiar contenedor antes de mostrar
+            numeros.forEach(num => {
+                const div = document.createElement('div'); // Crear un div para cada número
+                div.className = 'numero'; // Añadir clase al div
+                div.textContent = num; // Asignar el número como texto
+                contenedor.appendChild(div); // Añadir el div al contenedor
+            });
+        }
+    </script>
+
+</body>
+</html>

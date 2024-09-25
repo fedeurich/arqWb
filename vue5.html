@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador con Vue 3</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centrar el contenido */
+            margin-top: 50px; /* Espacio superior */
+        }
+        button {
+            margin: 0 10px; /* Espaciado horizontal entre botones */
+            padding: 10px 20px; /* Espaciado interno para los botones */
+            font-size: 16px; /* Tamaño de fuente de los botones */
+        }
+        p {
+            font-size: 24px; /* Tamaño de fuente del contador */
+            margin-top: 20px; /* Espacio superior para el párrafo */
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Contador</h1>
+    <button @click="decrementar">Decrementar</button>
+    <button @click="incrementar">Incrementar</button>
+    <p>{{ contador }}</p> <!-- Mostrar el valor del contador aquí -->
+</div>
+
+<script>
+    const { createApp } = Vue; // Importar Vue
+
+    createApp({
+        data() {
+            return {
+                contador: 0 // Inicializar el contador en 0
+            };
+        },
+        methods: {
+            incrementar() {
+                this.contador++; // Incrementar el contador
+            },
+            decrementar() {
+                this.contador--; // Decrementar el contador
+            }
+        }
+    }).mount('#app'); // Montar la aplicación en el elemento con id "app"
+</script>
+
+</body>
+</html>

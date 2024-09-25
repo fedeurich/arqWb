@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Formulario</title>
+    <style>
+        .error {
+            color: red; /* Color del texto de error */
+            font-size: 0.9rem; /* Tamaño de fuente del error */
+            margin-top: 5px; /* Espacio entre el campo y el mensaje de error */
+        }
+        .success {
+            color: green; /* Color del texto de éxito */
+            font-size: 1.2rem; /* Tamaño de fuente del mensaje de éxito */
+            margin-top: 10px; /* Espacio superior */
+        }
+    </style>
+</head>
+<body>
+
+    <form id="miFormulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+        <div id="errorNombre" class="error"></div>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" required>
+        <div id="errorApellido" class="error"></div>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required>
+        <div id="errorEdad" class="error"></div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="mensaje" class="success"></div> <!-- Mensaje de éxito -->
+
+    <script>
+        const formulario = document.getElementById('miFormulario');
+        const mensaje = document.getElementById('mensaje');
+        
+        // Función para validar el formulario
+        formulario.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evitar el envío del formulario
+            
+            // Limpiar mensajes de error anteriores
+            const errorNombre = document.getElementById('errorNombre');
+            const errorApellido = document.getElementById('errorApellido');
+            const errorEdad = document.getElementById('errorEdad');
+            errorNombre.textContent = '';
+            errorApellido.textContent = '';
+            errorEdad.textContent = '';
+            mensaje.textContent = '';
+
+            // Obtener los valores de los campos
+            const nombre = document.getElementById('nombre').value.trim();
+            const apellido = document.getElementById('apellido').value.trim();
+            const edad = parseInt(document.getElementById('edad').value);
+
+            // Validación de los campos
+            let valido = true;
+
+            if (!nombre) {
+                errorNombre.textContent = 'El nombre no puede estar vacío.';
+                valido = false;
+            }
+
+            if (!apellido) {
+                errorApellido.textContent = 'El apellido no puede estar vacío.';
+                valido = false;
+            }
+
+            if (isNaN(edad) || edad <= 0) {
+                errorEdad.textContent = 'La edad debe ser un número positivo.';
+                valido = false;
+            }
+
+            // Si todos los campos son válidos
+            if (valido) {
+                mensaje.textContent = 'Formulario enviado correctamente.';
+                formulario.reset(); // Limpiar el formulario
+            }
+        });
+    </script>
+
+</body>
+</html>

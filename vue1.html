@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica con Vue 3</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none; /* Eliminar los puntos de la lista */
+            padding: 0; /* Eliminar el padding predeterminado */
+        }
+        li {
+            padding: 10px; /* Espaciado interno para los elementos de la lista */
+            margin: 5px 0; /* Espaciado entre los elementos */
+            border: 1px solid #ccc; /* Borde alrededor de los elementos */
+            border-radius: 5px; /* Esquinas redondeadas */
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Lista Dinámica</h1>
+    <ul>
+        <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+    </ul>
+</div>
+
+<script>
+    const { createApp } = Vue; // Importar Vue
+
+    createApp({
+        data() {
+            return {
+                items: [ // Array de objetos para la lista
+                    { id: 1, name: 'Elemento 1' },
+                    { id: 2, name: 'Elemento 2' },
+                    { id: 3, name: 'Elemento 3' },
+                    { id: 4, name: 'Elemento 4' },
+                    { id: 5, name: 'Elemento 5' },
+                ]
+            };
+        }
+    }).mount('#app'); // Montar la aplicación en el elemento con id "app"
+</script>
+
+</body>
+</html>

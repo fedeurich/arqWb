@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar y Borrar un Párrafo con Vue 3</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            margin-right: 10px; /* Espaciado entre botones */
+        }
+        p {
+            margin-top: 20px; /* Espaciado superior para el párrafo */
+            font-size: 16px; /* Tamaño de fuente */
+            color: #333; /* Color del texto */
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Agregar y Borrar un Párrafo</h1>
+    <button @click="agregarPárrafo">Agregar Párrafo</button>
+    <button @click="borrarPárrafo" v-if="párrafoVisible">Borrar Párrafo</button>
+    
+    <p v-if="párrafoVisible">Este es un párrafo dinámico.</p>
+</div>
+
+<script>
+    const { createApp } = Vue; // Importar Vue
+
+    createApp({
+        data() {
+            return {
+                párrafoVisible: false // Estado para controlar la visibilidad del párrafo
+            };
+        },
+        methods: {
+            agregarPárrafo() {
+                this.párrafoVisible = true; // Cambiar el estado a true para mostrar el párrafo
+            },
+            borrarPárrafo() {
+                this.párrafoVisible = false; // Cambiar el estado a false para ocultar el párrafo
+            }
+        }
+    }).mount('#app'); // Montar la aplicación en el elemento con id "app"
+</script>
+
+</body>
+</html>
+

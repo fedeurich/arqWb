@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Imagen Dinámicamente</title>
+    <style>
+        #contenedor {
+            margin-top: 20px; /* Espaciado superior para el contenedor de imágenes */
+        }
+        img {
+            max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantener la relación de aspecto */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="agregarImagenBtn">Agregar Imagen</button> <!-- Botón para agregar la imagen -->
+    <div id="contenedor"></div> <!-- Contenedor donde se añadirán las imágenes -->
+
+    <script>
+        const agregarImagenBtn = document.getElementById('agregarImagenBtn'); // Botón
+        const contenedor = document.getElementById('contenedor'); // Contenedor para las imágenes
+
+        // Función para agregar una imagen
+        agregarImagenBtn.addEventListener('click', () => {
+            const div = document.createElement('div'); // Crear un nuevo <div>
+
+            // Crear un nuevo elemento <img>
+            const img = document.createElement('img');
+            img.src = 'https://www.anipedia.net/imagenes/perros-800x375.jpg'; // URL de la imagen
+            img.alt = 'Imagen de perros'; // Texto alternativo para la imagen
+
+            // Añadir la imagen al div
+            div.appendChild(img);
+            // Añadir el div al contenedor
+            contenedor.appendChild(div);
+        });
+    </script>
+
+</body>
+</html>

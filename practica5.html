@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica con fetch</title>
+</head>
+<body>
+
+    <div id="contenedor">Cargando datos...</div>
+
+    <script>
+        // Realizar la petición a la API
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json()) // Convertir la respuesta a JSON
+            .then(data => {
+                // Crear el elemento <ul>
+                const ul = document.createElement('ul');
+                
+                // Iterar sobre los datos obtenidos de la API
+                data.forEach(todo => {
+                    const li = document.createElement('li'); // Crear un <li>
+                    li.textContent = todo.title; // Asignar el título de la tarea
+                    ul.appendChild(li); // Añadir el <li> al <ul>
+                });
+
+                // Reemplazar el contenido del div con la lista <ul>
+                document.getElementById('contenedor').textContent = ''; // Limpiar el texto de "Cargando datos..."
+                document.getElementById('contenedor').appendChild(ul); // Añadir la lista al contenedor
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos:', error);
+                document.getElementById('contenedor').textContent = 'Error al cargar los datos.';
+            });
+    </script>
+
+</body>
+</html>

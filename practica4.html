@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinámica</title>
+</head>
+<body>
+
+    <div id="contenedor"></div>
+
+    <script>
+        // String con los elementos para la lista
+        const palabras = "Manzana, Banana, Naranja, Fresa, Uva";
+
+        // Convertir el string en un array de palabras
+        const listaPalabras = palabras.split(', ');
+
+        // Crear el elemento <ul>
+        const ul = document.createElement('ul');
+
+        // Iterar sobre el array para crear los elementos <li> y añadirlos al <ul>
+        listaPalabras.forEach(palabra => {
+            const li = document.createElement('li'); // Crear un <li>
+            li.textContent = palabra; // Asignar el texto de la palabra
+            ul.appendChild(li); // Añadir el <li> al <ul>
+        });
+
+        // Añadir la lista <ul> al contenedor en el body
+        document.getElementById('contenedor').appendChild(ul);
+    </script>
+
+</body>
+</html>

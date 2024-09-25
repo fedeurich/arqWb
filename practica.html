@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio de DOM</title>
+</head>
+<body>
+
+    <button id="miBoton"> Haz click aqui</button>
+    <div id="miDiv"></div>
+
+
+    <script>
+        const miBoton = document.getElementById('miBoton');
+        const miDiv = document.getElementById('miDiv');
+
+        miBoton.addEventListener('click', ()=>{
+            miDiv.textContent= "Se ha cliqueado";
+        })
+
+    </script>
+</body>
+</html>

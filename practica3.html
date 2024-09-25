@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar un div</title>
+</head>
+<body>
+
+    <div id="miDiv" style="width: 200px; height: 200px; background-color: lightgray;">
+        Este es un div que será eliminado
+    </div>
+
+    <button id="miBoton">Eliminar div</button>
+
+    <script>
+        const miBoton = document.getElementById('miBoton');
+        const miDiv = document.getElementById('miDiv');
+
+        miBoton.addEventListener('click', () => {
+            miDiv.remove(); // Elimina el div
+        });
+    </script>
+
+</body>
+</html>

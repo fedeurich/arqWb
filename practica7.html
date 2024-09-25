@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        #contador {
+            font-size: 2rem; /* Aumenta el tamaño de la fuente del contador */
+            margin: 10px 0; /* Espaciado alrededor del contador */
+        }
+        button {
+            margin: 5px; /* Espaciado alrededor de los botones */
+            padding: 10px 15px; /* Tamaño del botón */
+            font-size: 1rem; /* Tamaño de fuente del texto del botón */
+        }
+    </style>
+</head>
+<body>
+
+    <p id="contador">0</p> <!-- Elemento para mostrar el contador -->
+    <button id="incrementarBtn">Incrementar</button> <!-- Botón para incrementar -->
+    <button id="decrementarBtn">Decrementar</button> <!-- Botón para decrementar -->
+
+    <script>
+        const contadorElement = document.getElementById('contador'); // Elemento <p> del contador
+        const incrementarBtn = document.getElementById('incrementarBtn'); // Botón incrementar
+        const decrementarBtn = document.getElementById('decrementarBtn'); // Botón decrementar
+
+        let contador = 0; // Inicializamos el contador en 0
+
+        // Función para incrementar el contador
+        incrementarBtn.addEventListener('click', () => {
+            contador++; // Aumentar el contador
+            contadorElement.textContent = contador; // Actualizar el texto del contador
+        });
+
+        // Función para decrementar el contador
+        decrementarBtn.addEventListener('click', () => {
+            contador--;
+            contadorElement.textContent =contador;
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <style>
+        #imagenGrande {
+            width: 200px; /* Ancho de la imagen grande */
+            height: 200px; /* Alto de la imagen grande */
+            border: 2px solid #ccc; /* Borde para la imagen grande */
+            margin-bottom: 10px; /* Espaciado inferior para la imagen grande */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Evitar que la imagen exceda el tamaño */
+        }
+        #imagenGrande img {
+            max-width: 100%; /* Ajustar imagen grande al tamaño del contenedor */
+            max-height: 100%; /* Ajustar imagen grande al tamaño del contenedor */
+        }
+        .galeria {
+            display: flex; /* Disposición en fila para las imágenes pequeñas */
+        }
+        .galeria img {
+            width: 60px; /* Ancho de las imágenes pequeñas */
+            height: 60px; /* Alto de las imágenes pequeñas */
+            margin-right: 10px; /* Espaciado entre imágenes pequeñas */
+            cursor: pointer; /* Cambiar cursor al pasar sobre imágenes pequeñas */
+            border: 2px solid transparent; /* Borde para imágenes pequeñas */
+        }
+        .galeria img:hover {
+            border: 2px solid blue; /* Borde azul al pasar el mouse sobre imágenes pequeñas */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="imagenGrande">
+        <img id="imagenActual" src="" alt="Imagen grande" /> <!-- Imagen grande -->
+    </div>
+    <div class="galeria" id="galeria"></div> <!-- Contenedor para imágenes pequeñas -->
+
+    <script>
+        // Lista de URLs de imágenes
+        const imagenes = [
+            'https://via.placeholder.com/200', // Imagen grande inicial
+            'https://via.placeholder.com/60',  // Imagen pequeña 1
+            'https://via.placeholder.com/60/ff0000/ffffff?text=2', // Imagen pequeña 2
+            'https://via.placeholder.com/60/00ff00/ffffff?text=3', // Imagen pequeña 3
+            'https://via.placeholder.com/60/0000ff/ffffff?text=4'  // Imagen pequeña 4
+        ];
+
+        const imagenActual = document.getElementById('imagenActual'); // Imagen grande
+        const galeria = document.getElementById('galeria'); // Contenedor de la galería
+
+        // Establecer la imagen inicial grande
+        imagenActual.src = imagenes[0];
+
+        // Función para crear las imágenes pequeñas
+        function crearGaleria() {
+            for (let i = 1; i < imagenes.length; i++) {
+                const imgPequeña = document.createElement('img'); // Crear imagen pequeña
+                imgPequeña.src = imagenes[i]; // Asignar URL
+                imgPequeña.alt = `Imagen pequeña ${i}`; // Texto alternativo
+                imgPequeña.addEventListener('click', () => {
+                    imagenActual.src = imgPequeña.src; // Cambiar imagen grande al hacer clic
+                });
+                galeria.appendChild(imgPequeña); // Añadir imagen pequeña al contenedor
+            }
+        }
+
+        crearGaleria(); // Llamar a la función para crear la galería
+    </script>
+
+</body>
+</html>
